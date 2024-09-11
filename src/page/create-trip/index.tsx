@@ -54,6 +54,10 @@ function CreateTrip() {
     if (!user) {
       setOpenDialog(true);
     }
+    if (!formData?.location || !formData?.noOfDays || !formData?.party || !formData?.budget) {
+      toast('Please fill in all fields');
+      return ;
+    }
     if (Number(formData.noOfDays) > 5) {
       toast('We only plan trips for 5 days or less');
       return ;

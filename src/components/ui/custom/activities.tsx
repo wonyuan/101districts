@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Card from "@/components/ui/custom/card";
 
 interface Trip {
@@ -14,7 +13,7 @@ interface Trip {
         itinerary?: {
             activities: [{
                 place: string;
-                time_range: string;
+                time: string;
                 description: string;
                 emoji: string;
             }];
@@ -29,12 +28,12 @@ function Activities({trip}: {trip: Trip}) {
             <h2 className="font-bold text-xl pt-6 pb-2"> And Now,</h2>
             <div>
                 {trip?.tripData?.itinerary?.map((place, idx) => (
-                    <div className='grid grid-cols-2'>
-                        <div>
+                    <div className="pb-8">
                         <h2 className="font-medium text-lg"> {place?.day}</h2>
+                        <div className='grid grid-cols-2 gap-x-12'>
                         {place?.activities.map((activity, idx) => (
                             <div>
-                                <h2 className="font-medium text-sm text-sky-950">{activity?.time_range}</h2>
+                                <h2 className="font-medium text-sm text-amber-700 pt-3">{activity?.time}</h2>
                                 <Card place={activity}/>
                             </div>
                         ))}
