@@ -1,16 +1,40 @@
 import { IconBeach } from '@tabler/icons-react';
 import { Button } from "@/components/ui/button"
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
   } from "@/components/ui/popover"
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
   
 
 function Header () {
-    const user = JSON.parse(localStorage.getItem('user') || '');
+    const [user, setUser] = useState(() => {
+        const userJson = localStorage.getItem('user');
+        return userJson ? JSON.parse(userJson) : null;
+    })
+    
+    const login = useGoogleLogin({
+        onSuccess: (response) => getUserProfile(response),
+        onError: (error) => console.log(error),
+      })
+
+    const getUserProfile = async (userToken: { access_token: string }) => {
+        axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userToken?.access_token}`,{
+          headers: {
+            Authorization: `Bearer ${userToken?.access_token}`,
+            Accept: 'Application/json',
+          }
+        }).then((response) => {
+          console.log(response);
+          localStorage.setItem('user', JSON.stringify(response.data));
+          setUser(response);
+          window.location.reload();
+        })
+      };
     
     useEffect(() => {
         console.log(user);
@@ -23,20 +47,31 @@ function Header () {
           <div>
             { user ? 
             <div className="flex gap-3">
-                <Link to={'/create-trip'}>
-                    <Button> 
-                        + Create a Trip 
-                    </Button>
-                </Link>
-                <Button variant="outline"> View Trips</Button>
-                <img src={user?.picture} className="rounded-xl h-[35px]"/>
-                <Popover>
-                    <PopoverTrigger>Open</PopoverTrigger>
-                    <PopoverContent>Place content for the popover here.</PopoverContent>
+                <a href='/create-trip'>
+                    <Button> + Create a Trip </Button>
+                </a>
+                <a href='/trip-history'>
+                    <Button variant="outline"> View Trips</Button>
+                </a>
+                <Popover >
+                    <PopoverTrigger>
+                        <img src={user?.picture} className="rounded-xl h-[35px]"/>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                        <h2 onClick={() => {
+                            googleLogout();
+                            localStorage.clear();
+                            setUser(null);
+                            window.location.reload();
+                        }}
+                        className="cursor-pointer"> 
+                            Logout
+                        </h2>
+                    </PopoverContent>
                 </Popover>
             </div>
              :
-            <Button>
+            <Button onClick={() => login()}>
                 Sign In
             </Button>
             } 
