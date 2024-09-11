@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { toast } from "sonner";
 import RandomImage from "@/components/ui/custom/imageHeader";
-import { Hotel } from "lucide-react";
 import Hotels from "@/components/ui/custom/hotels";
+import Activities from "@/components/ui/custom/activities";
 
 
 function ViewTrip() {
@@ -39,7 +39,7 @@ function ViewTrip() {
             <RandomImage/>
             <InfoSection trip={trip}/>
             <Hotels trip={trip}/>
-
+            <Activities trip={trip}/>
         </div>
     )
 }

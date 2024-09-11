@@ -11,7 +11,7 @@ interface Trip {
     };
     tripData?: {
         hotels?: {
-            description: ReactNode;
+            description: string;
             rating: string;
             price: string;
             address: string;
@@ -25,7 +25,7 @@ function Hotels({trip}: {trip: Trip}) {
     return (
         <div>
             <h2 className="font-bold text-xl pt-6 pb-2"> A Humble Abode</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 {trip?.tripData?.hotels?.map((hotel, idx) => (
                     <Link to={`https://www.google.com/maps/search/?api=1&query=${hotel?.name}`} key={idx} target="_blank" rel="noreferrer">
                     <div className="hover:scale-105 transition-all text-6xl">
