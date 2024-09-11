@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import CreateTrip from './page/create-trip/index.tsx'
 import Header from './components/ui/custom/header.tsx'
 import { Toaster } from './components/ui/sonner.tsx'
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import ViewTrip from './page/view-trip/[tripId]/index.tsx'
+import CreateTrip from './page/create-trip/index.tsx'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path:'/create-trip',
     element: <CreateTrip  />
+  },
+  {
+    path:'/view-trip/:tripId',
+    element: <ViewTrip />
   }
 ])
 

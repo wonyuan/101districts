@@ -17,8 +17,10 @@ import { useGoogleLogin } from '@react-oauth/google'
 import axios from 'axios'
 import { doc, setDoc } from "firebase/firestore"; 
 import { db } from '@/service/firebaseConfig'
+import { useNavigate } from 'react-router-dom'
 
 function CreateTrip() {
+  const router = useNavigate();
   const [place, setPlace] = useState<{ label: string; value: string } | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -74,6 +76,7 @@ function CreateTrip() {
   }, [formData])
 
   const storeTrip = async (tripData: string) => {
+    setLoading(true);
     const docId = Date.now().toString();
     const user = JSON.parse(localStorage.getItem('user') || '');
     await setDoc(doc(db, "trips", docId),{
@@ -82,6 +85,8 @@ function CreateTrip() {
       userEmail: user?.email,
       id: docId,
     });
+    setLoading(false);
+    router(`/view-trip/${docId}`);
   }
   const getUserProfile = async (userToken: { access_token: string }) => {
     axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${userToken?.access_token}`,{

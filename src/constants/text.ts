@@ -23,7 +23,7 @@ export const TravelParty = [
     {
         id: 4,
         name: 'a family',
-        desc: 'a few close friends',
+        desc: 'some familial bonding time',
         icon: '🏡',
         size: '3-5 people',
     },
@@ -57,4 +57,4 @@ export const TravelBudget = [
     },
 ]
 
-export const geminiPrompt = 'Generate a travel plan/itinerary for a location, {locationName} for {totalDays} days for {travelParty} with a {travelBudget} budget. Give me a hotel option list that includes the hotel name, address, price, url of an image of the hotel, geo coordinates, rating, and description and suggest an itinerary for the location {locationName} for {totalDays} days including the place name, place detail, url of an image of the place, geo coordinates, ticket pricing, rating, time range of when to complete the activity, and time to travel to the activity for the {totalDays} days with each day planned in terms of the best time to visit, all and only in JSON format.'
+export const geminiPrompt = 'Generate a travel plan/itinerary for a location, {locationName} for {totalDays} days for {travelParty} with a {travelBudget} budget. Give me a hotel option list of at least 4 hotels, including the hotel name, address, price, an emoji of the hotel, geo coordinates, rating, and description and suggest an itinerary for the location {locationName} for {totalDays} days including the place name, place detail, an emoji representing the activity or place, geo coordinates, ticket pricing, rating, time range of when to complete the activity, and time to travel to the activity for the {totalDays} days with each day planned in terms of the best time to visit, all and only in JSON format.'
