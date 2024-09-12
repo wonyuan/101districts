@@ -6,6 +6,16 @@ function RandomImage() {
     '/flower.jpg',
     '/oceanside.jpg',
     '/train.jpg',
+    '/mountain.jpg',
+    '/city.jpg',
+    '/beach.jpg',
+    '/amalfi.jpg',
+    '/divot.jpg',
+    '/fjord.jpg',
+    '/grassy.jpg',
+    '/haebyeon.jpg',
+    '/lighthouse.jpg',
+    '/kyoto.jpg',
   ];
 
   const [randomImage, setRandomImage] = useState<string>('');
