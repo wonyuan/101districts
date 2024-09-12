@@ -68,7 +68,6 @@ function CreateTrip() {
     .replace(/{totalDays}/g, formData?.noOfDays.toString() || '') // Use regex with 'g' flag
     .replace(/{travelParty}/g, formData?.party || '')
     .replace(/{travelBudget}/g, formData?.budget || '');
-    console.log(FINAL_PROMPT);
 
     const result = await chatSession.sendMessage(FINAL_PROMPT);
     setLoading(false);
@@ -76,7 +75,6 @@ function CreateTrip() {
   }
     
   useEffect(() => {
-    console.log(formData);
   }, [formData])
 
   const storeTrip = async (tripData: string) => {
@@ -99,7 +97,6 @@ function CreateTrip() {
         Accept: 'Application/json',
       }
     }).then((response) => {
-      console.log(response);
       localStorage.setItem('user', JSON.stringify(response.data));
       setOpenDialog(false);
       generateTrip();

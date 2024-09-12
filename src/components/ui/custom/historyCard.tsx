@@ -29,7 +29,7 @@ function HistoryCard({trip}: {trip: Trip}) {
     <Link to={`/view-trip/${tripId}`}>
     <div className="shadow-md text-sm border rounded-xl py-4 px-6 mt-2 flex gap-5 hover:scale-105 hover:shadow-md transition-all">
         <div>
-            <div className="flex items-end justify-end pb-3">
+            <div className="flex items-end pb-3">
             <h2 className="text-8xl mr-4 pr-2"> {emoji} </h2>
             <h2 className="text-lg font-medium align-bottom"> {tripPref?.location?.label} </h2>
             </div>

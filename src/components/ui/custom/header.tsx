@@ -28,7 +28,6 @@ function Header () {
             Accept: 'Application/json',
           }
         }).then((response) => {
-          console.log(response);
           localStorage.setItem('user', JSON.stringify(response.data));
           setUser(response);
           window.location.reload();
@@ -36,7 +35,6 @@ function Header () {
       };
     
     useEffect(() => {
-        console.log(user);
     }, [user])
 
     return (

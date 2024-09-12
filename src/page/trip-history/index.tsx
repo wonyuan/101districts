@@ -44,9 +44,7 @@ function TripHistory() {
     setUserTrips([]);
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
         setUserTrips(prev => [...prev, doc.data()]);
-        console.log(userTrips);
     });
   }
   
