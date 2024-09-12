@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Card from "@/components/ui/custom/card";
 
 interface Trip {
@@ -16,11 +17,15 @@ interface Trip {
                 time: string;
                 description: string;
                 emoji: string;
+                travel_time: string;
+                ticket_pricing: string;
+                detail: string;
             }];
             day: string;
-}[]; 
+        }[]; 
     };
 }
+
 
 function Activities({trip}: {trip: Trip}) {
     return (

@@ -2,7 +2,26 @@ import { Badge } from "@/components/ui/badge"
 import { Link } from 'react-router-dom'
 import { IconCalendarEvent, IconMoneybag, IconSparkles } from '@tabler/icons-react';
 
-function HistoryCard({trip}: {trip: any}) {
+interface Trip {
+  id: string;
+  userPreferences: {
+    location: {
+      label: string;
+    };
+    noOfDays: number;
+    budget: string;
+    party: string;
+  };
+  tripData: {
+    itinerary: {
+      activities: {
+        emoji: string;
+      }[];
+    }[];
+  };
+}
+
+function HistoryCard({trip}: {trip: Trip}) {
   const tripPref = trip?.userPreferences;
   const emoji = trip?.tripData?.itinerary[0]?.activities[3]?.emoji;
   const tripId = trip?.id;

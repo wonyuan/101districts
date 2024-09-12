@@ -4,6 +4,25 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HistoryCard from "@/components/ui/custom/historyCard";
 
+interface Trip {
+    id: string;
+    userPreferences: {
+      location: {
+        label: string;
+      };
+      noOfDays: number;
+      budget: string;
+      party: string;
+    };
+    tripData: {
+      itinerary: {
+        activities: {
+          emoji: string;
+        }[];
+      }[];
+    };
+  }
+
 function TripHistory() {
   const router = useNavigate();
   const [userTrips, setUserTrips] = useState<DocumentData[]>([]);
@@ -35,8 +54,8 @@ function TripHistory() {
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-100 px-5 mt-10 mb-20">
         <h2 className="font-bold text-xl pb-2"> All Your Past Itineraries </h2>
         <div className="grid grid-cols-3 gap-6">
-            {userTrips.map((trip, idx) => (
-                <HistoryCard trip={trip} />
+            {userTrips.map((trip) => (
+                <HistoryCard trip={trip as Trip} />
             ))}
         </div>
     </div>

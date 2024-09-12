@@ -9,6 +9,36 @@ import RandomImage from "@/components/ui/custom/imageHeader";
 import Hotels from "@/components/ui/custom/hotels";
 import Activities from "@/components/ui/custom/activities";
 
+interface Trip {
+    userPreferences: {
+        location: {
+            label: string;
+        };
+        budget: string;
+        party: string;
+        noOfDays: string;
+    };
+    tripData?: {
+        itinerary?: {
+            activities: [{
+                place: string;
+                time: string;
+                description: string;
+                emoji: string;
+            }];
+            day: string;
+        }[],
+        hotels?: {
+            description: string;
+            rating: string;
+            price: string;
+            address: string;
+            name: string; 
+            emoji: string 
+        }[]; 
+    };
+}
+
 
 function ViewTrip() {
     const { tripId } = useParams()
@@ -19,6 +49,7 @@ function ViewTrip() {
         if (tripId) {
             getTripData();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tripId])
 
     const getTripData = async() => {
@@ -37,9 +68,9 @@ function ViewTrip() {
     return (
         <div className="sm:px-10 md:px-32 lg:px-56 xl:px-100 px-5 mt-10 mb-20">
             <RandomImage/>
-            <InfoSection trip={trip}/>
-            <Hotels trip={trip}/>
-            <Activities trip={trip}/>
+            <InfoSection trip={trip as Trip}/>
+            <Hotels trip={trip as Trip}/>
+            <Activities trip={trip as Trip}/>
         </div>
     )
 }
