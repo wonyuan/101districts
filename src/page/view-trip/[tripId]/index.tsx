@@ -25,6 +25,9 @@ interface Trip {
                 time: string;
                 description: string;
                 emoji: string;
+                travel_time: string;
+                ticket_pricing: string;
+                detail: string;
             }];
             day: string;
         }[],

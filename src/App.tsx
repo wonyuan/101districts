@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import Menu from '@/components/ui/custom/menu'
 
 function App() {
