@@ -1,7 +1,6 @@
 import { IconBeach } from '@tabler/icons-react';
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'
 import {
     Popover,
     PopoverContent,
@@ -43,7 +42,9 @@ function Header () {
     return (
         <>
         <div className="p-2 shadow-sm flex justify-between items-center px-5"> 
+            <a href='/'>
           <IconBeach stroke={2} size={38} />
+          </a>
           <div>
             { user ? 
             <div className="flex gap-3">

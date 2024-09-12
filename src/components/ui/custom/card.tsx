@@ -12,7 +12,7 @@ interface Place {
 function Card({place}: {place: Place}) {
   return (
     <Link to={`https://www.google.com/maps/search/?api=1&query=${place?.place}`} target="_blank" rel="noreferrer">
-    <div className="shadow-md text-sm border rounded-xl p-3 mt-2 flex gap-5 hover:scale-105 hover:shadow-md transition-all">
+    <div className="shadow-md text-sm border rounded-xl p-6 mt-2 flex gap-5 hover:scale-105 hover:shadow-md transition-all">
         <h2 className="text-6xl mr-4"> {place?.emoji} </h2>
         <div>
             <h2 className="font-bold text-lg"> {place?.place} </h2>
