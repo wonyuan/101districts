@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Link } from 'react-router-dom'
-import { IconCalendarEvent, IconMoneybag, IconSparkles, IconSquareRoundedMinusFilled} from '@tabler/icons-react';
+import { IconCalendarEvent, IconMoneybag, IconSparkles, IconSquareRoundedMinusFilled } from '@tabler/icons-react';
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "@/service/firebaseConfig";
 
@@ -37,6 +37,7 @@ function HistoryCard({trip}: {trip: Trip}) {
     //     setUserTrips(prev => [...prev, doc.data()]);
     // });
     await deleteDoc(doc(db, "trips", `${trip?.id}`));
+    window.location.reload();
   }
 
   return (
@@ -66,7 +67,7 @@ function HistoryCard({trip}: {trip: Trip}) {
         className="flex items-end pb-2 cursor-pointer"
         onClick={() => DeleteUserTrip()}
       >
-        <IconSquareRoundedMinusFilled size={30} className="text-stone-700 hover:text-stone-600"/>
+        <IconSquareRoundedMinusFilled size={30} className="text-stone-700 hover:text-stone-500 hover:scale-105"/>
       </div>
     </div>
   );
